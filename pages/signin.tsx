@@ -26,11 +26,11 @@ export default function SignupPage() {
         <p className='text-center font-light dark:text-gray-200'>
           Not Registered yet ?
           <Link href='/signup'>
-            <a className='text-blue-700 font-normal dark:text-blue-400 ml-2'>Sign Up</a>
+            <a className='text-green-700 font-normal dark:text-green-400 ml-2'>Sign Up</a>
           </Link>
         </p>
       </div>
-      <form onSubmit={formik.handleSubmit} className='card md:w-1/2 lg:w-1/3 flex flex-col dark:text-gray-300'>
+      <form onSubmit={formik.handleSubmit} className='card px-8 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
         <div className='input-container relative'>
           <label htmlFor='password' className='mb-1 md:w-1/3 font-semibold'>
             Email

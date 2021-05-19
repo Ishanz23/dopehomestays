@@ -26,7 +26,6 @@
 }
 .app > main {
   grid-area: main;
-  padding: 1rem;
 }
 .app > footer {
   grid-area: footer;
@@ -41,7 +40,7 @@
 }
 
 .card {
-  @apply m-4 p-4 rounded-md shadow-sm bg-gray-200 dark:bg-gray-800;
+  @apply p-4 rounded-md shadow-sm bg-gray-200 dark:bg-gray-800;
 }
 
 @tailwind components;

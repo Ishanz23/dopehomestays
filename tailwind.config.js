@@ -7,6 +7,9 @@ module.exports = {
       transformOrigin: {
         0: '0%',
       },
+      backgroundImage: (theme) => ({
+        'landing-cover': "url('/images/landing-cover.jpg')",
+      }),
     },
     minWidth: {
       0: '0',

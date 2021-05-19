@@ -1,19 +1,17 @@
+import { Fragment } from 'react'
 import { GetStaticProps } from 'next'
-import { gql } from '@apollo/client'
+import gql from 'graphql-tag'
+import client from '../apollo-client'
 
 import Homestays from '../components/Homestays'
-import client from '../apollo-client'
-import { Fragment } from 'react'
-import LandingPanel from '../components/LandingPanel'
 
-export default function Home({ homestays, error }) {
+export default function HomestaysPage({ homestays, error }) {
   return (
     <Fragment>
       {error || !homestays ? (
         <div className='dark:text-gray-100'>Something went wrong!</div>
       ) : (
         <Fragment>
-          <LandingPanel />
           <Homestays homestays={homestays} />
         </Fragment>
       )}
