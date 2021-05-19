@@ -2,7 +2,12 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      zIndex: { '-1': '-1', '-2': '-2' },
+      transformOrigin: {
+        0: '0%',
+      },
+    },
     minWidth: {
       0: '0',
       '1/10': '10%',
@@ -16,7 +21,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderColor: ['responsive', 'hover', 'focus', 'focus-within'],
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }

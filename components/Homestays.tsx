@@ -4,8 +4,8 @@ export default function Homestays({ homestays }) {
   return (
     <div className='w-full flex flex-col flex-wrap lg:flex-row p-4 lg:items-center justify-between'>
       {homestays.map((homestay) => (
-        <div className='w-full lg:w-1/2 lg:min-w-1/2 h-full'>
-          <div key={homestay._id} className='sm:flex m-4 shadow-md rounded-xl overflow-hidden'>
+        <div key={homestay._id} className='w-full lg:w-1/2 lg:min-w-1/2 h-full'>
+          <div className='sm:flex m-4 shadow-md rounded-xl overflow-hidden'>
             {homestay.coverImage && homestay.coverImage.path && (
               <div className='sm:flex-shrink-0 h-full sm:w-2/5'>
                 <Image

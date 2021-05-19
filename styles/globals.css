@@ -1,6 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   h1 {
@@ -17,7 +15,6 @@
 
 .app {
   min-height: 100vh;
-
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
@@ -34,3 +31,18 @@
 .app > footer {
   grid-area: footer;
 }
+
+.input-container {
+  @apply pt-4 pb-4 md:flex md:justify-between items-center;
+}
+
+.input-field {
+  @apply w-full mt-2 md:mt-0 rounded-md shadow-sm bg-gray-50 dark:bg-gray-700 border-0 focus:ring-green-600 dark:focus:ring-green-400 focus:border-green-600 dark:focus:border-green-400;
+}
+
+.card {
+  @apply m-4 p-4 rounded-md shadow-sm bg-gray-200 dark:bg-gray-800;
+}
+
+@tailwind components;
+@tailwind utilities;
