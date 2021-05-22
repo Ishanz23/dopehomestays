@@ -1,19 +1,57 @@
+import { gql, useMutation } from '@apollo/client'
 import { useFormik } from 'formik'
+import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 
-export default function SignupPage() {
+const EMAIL_LOGIN_MUTATION = gql`
+  mutation ownerLogin($email: String!, $password: String!) {
+    ownerLogin(email: $email, password: $password) {
+      token
+      email
+    }
+  }
+`
+const MOBILE_LOGIN_MUTATION = gql`
+  mutation ownerLogin($mobile: String!, $password: String!) {
+    ownerLogin(mobile: $mobile, password: $password) {
+      token
+      mobile
+    }
+  }
+`
+
+interface LoginResponse {
+  ownerLogin: {
+    token: string
+    email?: string
+    mobile?: string
+  }
+}
+
+export default function SigninPage() {
+  const [emailLogin, { data: emailLoginData, loading: emailLoginLoading, error: emailLoginError }] =
+    useMutation<LoginResponse>(EMAIL_LOGIN_MUTATION)
+  const [mobileLogin, mobileLoginRes] = useMutation<LoginResponse>(MOBILE_LOGIN_MUTATION)
+  const router = useRouter()
+
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      middleName: '',
-      lastName: '',
       email: '',
       mobile: '',
       password: '',
-      sex: '',
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+    onSubmit: async (values) => {
+      console.log(values)
+      if (values.email) {
+        await emailLogin({ variables: { email: values.email, password: values.password } })
+        console.log(emailLoginData)
+        if (emailLoginData && emailLoginData.ownerLogin) {
+          localStorage.setItem('token', emailLoginData.ownerLogin.token)
+        }
+      } else if (values.mobile) {
+        await mobileLogin({ variables: { mobile: values.mobile, password: values.password } })
+        console.log(mobileLoginRes)
+      }
     },
   })
 
@@ -79,6 +117,8 @@ export default function SignupPage() {
           className='px-4 mt-4 mb-4 py-2 text-sm font-semibold rounded-md text-gray-200 bg-green-600 border-2 border-transparent uppercase tracking-wider hover:bg-transparent hover:text-green-600 dark:hover:text-green-400 hover:border-green-600 dark:hover:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-600'>
           sign in
         </button>
+
+        {emailLoginError ? <p className='p-4 text-red-500'>Login failed</p> : ''}
       </form>
     </div>
   )

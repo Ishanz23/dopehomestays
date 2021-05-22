@@ -26,6 +26,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
         _id
         name
         place
+        description
+        owners {
+          _id
+          firstName
+          lastName
+        }
         coverImage {
           name
           path

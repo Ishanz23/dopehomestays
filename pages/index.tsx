@@ -5,6 +5,7 @@ import Homestays from '../components/Homestays'
 import client from '../apollo-client'
 import { Fragment } from 'react'
 import LandingPanel from '../components/LandingPanel'
+import { Homestay } from '../models/Homestay'
 
 export default function Home({ homestays, error }) {
   return (
@@ -28,6 +29,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
         _id
         name
         place
+        description
+        owners {
+          _id
+          firstName
+          lastName
+        }
         coverImage {
           name
           path
@@ -35,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     }
   `
-  const { data, error } = await client.query({
+  const { data, error } = await client.query<{ homestays: Homestay[] }>({
     query,
   })
 

@@ -1,6 +1,10 @@
 import Image from 'next/image'
 
-export default function Homestays({ homestays }) {
+import { LocationMarkerIcon } from '@heroicons/react/solid'
+import { PropsWithChildren } from 'react'
+import { Homestay } from '../models/Homestay'
+
+export default function Homestays({ homestays }: PropsWithChildren<{ homestays: Homestay[] }>) {
   return (
     <div className='w-full flex flex-col flex-wrap lg:flex-row p-4 lg:items-center justify-between'>
       {homestays.map((homestay) => (
@@ -19,9 +23,25 @@ export default function Homestays({ homestays }) {
             )}
             <div className='p-8'>
               <h3 className='font-semibold text-green-600 dark:text-green-300'>{homestay.name}</h3>
-              <p className='dark:text-gray-200'>
-                {homestay.name} - {homestay.place} - {homestay.name}
+
+              <p className='dark:text-green-200 text-sm flex mt-2'>
+                <LocationMarkerIcon className='h-5 w-5 mr-2' /> {homestay.place}
               </p>
+              {homestay.owners && homestay.owners.length ? (
+                <p className='dark:text-gray-200 text-xs mt-2'>
+                  Owned by{' '}
+                  <span>
+                    {homestay.owners.map((owner) => (
+                      <span key={owner._id}>
+                        {owner.firstName} {owner.lastName}
+                      </span>
+                    ))}
+                  </span>
+                </p>
+              ) : (
+                ''
+              )}
+              <p className='mt-4 dark:text-gray-200 text-sm font-light'>{homestay.description}</p>
             </div>
           </div>
         </div>
