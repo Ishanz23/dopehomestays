@@ -1,7 +1,7 @@
 import { SexType } from './types'
 
 export interface Traveler {
-  _id: string
+  _id?: string
   firstName: string
   middleName?: string
   lastName?: string
@@ -10,8 +10,8 @@ export interface Traveler {
   email: string
   mobile: string
   address?: string
-  state: string
-  country: string
+  state?: string
+  country?: string
   dpPath?: string
   password: string
   createdAt?: string

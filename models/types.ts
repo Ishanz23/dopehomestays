@@ -1,4 +1,4 @@
-export type SexType = 'MALE' | 'FEMALE' | 'OTHERS'
+export type SexType = 'MALE' | 'FEMALE' | 'OTHERS' | ''
 
 export type MaritalStatusType = 'SINGLE' | 'MARRIED' | 'DIVORCED' | 'SEPERATED' | 'WIDOWED' | 'DOMESTIC_PARTNERSHIP'
 

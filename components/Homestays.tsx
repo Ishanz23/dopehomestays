@@ -28,7 +28,7 @@ export default function Homestays({ homestays }: PropsWithChildren<{ homestays: 
                 <LocationMarkerIcon className='h-5 w-5 mr-2' /> {homestay.place}
               </p>
               {homestay.owners && homestay.owners.length ? (
-                <p className='dark:text-gray-200 text-xs mt-2'>
+                <p className='dark:text-gray-200 text-sm lg:text:xs mt-2'>
                   Owned by{' '}
                   <span>
                     {homestay.owners.map((owner) => (

@@ -9,7 +9,11 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         'landing-cover': "url('/images/landing-cover.jpg')",
+        'homestay-cover': "url('/images/homestay-cover.jpg')",
       }),
+      blur: {
+        px: '1px',
+      },
     },
     minWidth: {
       0: '0',

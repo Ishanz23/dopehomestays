@@ -2,7 +2,6 @@ import { gql, useMutation } from '@apollo/client'
 import { useFormik } from 'formik'
 import Link from 'next/link'
 import { Traveler, CreateTravelerInput } from '../models/Traveler'
-import { Sex } from '../models/types'
 
 const createTravelerMutation = gql`
   mutation createTraveler($payload: CreateTravelerInput!) {
@@ -18,7 +17,7 @@ const createTravelerMutation = gql`
 export default function SignupPage() {
   const [createTraveler, { data, loading, error }] = useMutation<Partial<Traveler>>(createTravelerMutation)
 
-  const formik = useFormik({
+  const formik = useFormik<CreateTravelerInput>({
     initialValues: {
       firstName: '',
       middleName: '',
@@ -97,9 +96,9 @@ export default function SignupPage() {
           </label>
           <select name='sex' id='sex' {...formik.getFieldProps('sex')} placeholder='Sex' className='input-field'>
             <option value='select'>Select sex</option>
-            <option value={Sex.FEMALE}>Female</option>
-            <option value={Sex.MALE}>Male</option>
-            <option value={Sex.OTHERS}>Others</option>
+            <option value='FEMALE'>Female</option>
+            <option value='MALE'>Male</option>
+            <option value='OTHERS'>Others</option>
           </select>
 
           {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
