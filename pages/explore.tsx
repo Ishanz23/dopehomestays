@@ -8,10 +8,10 @@ import Homestays from '../components/Homestays'
 export default function ExplorePage({ homestays, error }) {
   return (
     <Fragment>
-      <section className='h-screen p-4 bg-landing-cover bg-cover bg-gray-900 bg-blend-overlay grid place-items-center text-gray-100'>
+      <section className='height-main p-4 bg-landing-cover bg-cover bg-gray-900 bg-blend-overlay grid place-items-center text-gray-100'>
         Locations
       </section>
-      <section className='h-screen p-4 bg-homestay-cover bg-cover bg-gray-900 bg-blend-overlay grid place-items-center text-gray-100'>
+      <section className='height-main p-4 bg-homestay-cover bg-cover bg-gray-900 bg-blend-overlay grid place-items-center text-gray-100'>
         <div className='text-center text-5xl font-landing w-full px-4 py-4 flex items-center justify-center bg-gray-700 opacity-80'>
           <caption>Top Homestays</caption>
         </div>

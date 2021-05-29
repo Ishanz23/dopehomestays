@@ -7,7 +7,7 @@ import Homestays from '../components/Homestays'
 
 export default function HomestaysPage({ homestays, error }) {
   return (
-    <Fragment>
+    <section className='min-height-main p-4 bg-landing-cover bg-cover bg-fixed bg-gray-900 bg-blend-overlay grid place-items-center text-gray-100'>
       {error || !homestays ? (
         <div className='dark:text-gray-100'>Something went wrong!</div>
       ) : (
@@ -15,7 +15,7 @@ export default function HomestaysPage({ homestays, error }) {
           <Homestays homestays={homestays} />
         </Fragment>
       )}
-    </Fragment>
+    </section>
   )
 }
 

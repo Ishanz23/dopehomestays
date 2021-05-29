@@ -30,7 +30,6 @@ export default function SignupPage() {
     onSubmit: async (values) => {
       alert(JSON.stringify(values, null, 2))
       await createTraveler({ variables: { payload: values } })
-      console.log(data)
     },
   })
 
@@ -47,7 +46,9 @@ export default function SignupPage() {
           </Link>
         </p>
       </div>
-      <form onSubmit={formik.handleSubmit} className='card px-8 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
+      <form
+        onSubmit={formik.handleSubmit}
+        className='card px-8 md:mr-6 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
         <div className='input-container'>
           <label htmlFor='password' className='mb-1 md:w-1/3 font-semibold'>
             First name
@@ -101,7 +102,7 @@ export default function SignupPage() {
             <option value='OTHERS'>Others</option>
           </select>
 
-          {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
+          {formik.touched.sex && formik.errors.sex ? <div>{formik.errors.sex}</div> : null}
         </div>
         <div className='input-container'>
           <label htmlFor='password' className='mb-1 md:w-1/3 font-semibold'>
@@ -143,7 +144,7 @@ export default function SignupPage() {
             {...formik.getFieldProps('password')}
             className='input-field'
           />
-          {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
+          {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
         </div>
         <button
           type='submit'

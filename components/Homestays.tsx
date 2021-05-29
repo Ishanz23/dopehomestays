@@ -6,7 +6,7 @@ import { Homestay } from '../models/Homestay'
 
 export default function Homestays({ homestays }: PropsWithChildren<{ homestays: Homestay[] }>) {
   return (
-    <div className='w-full flex flex-col flex-wrap lg:flex-row p-4 lg:items-center justify-between'>
+    <div className='w-full flex flex-col flex-wrap lg:flex-row gap-8 p-4 lg:items-center justify-between'>
       {homestays.map((homestay) => (
         <div
           key={homestay._id}

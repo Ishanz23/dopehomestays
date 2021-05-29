@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useRef } from 'react'
 import Link from 'next/link'
 
 import Navbar from './Navbar'
@@ -6,9 +6,10 @@ import Navbar from './Navbar'
 export default function Layout({ children }) {
   return (
     <Fragment>
-      <header className='fixed w-full min-h-header top-0 z-50 bg-gray-100 dark:bg-gray-900'>
+      <header className={`fixed w-full h-16 top-0 z-50 bg-gray-100 dark:bg-gray-900`}>
         <Navbar></Navbar>
       </header>
+      <div className='dummy-header h-16'></div>
       <main className=''>{children}</main>
       <footer className='flex px-4 py-2 items-center justify-center'>
         Powered by
