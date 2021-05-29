@@ -3,6 +3,9 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        landing: ['"Exo 2"', 'sans-serif'],
+      },
       zIndex: { '-1': '-1', '-2': '-2' },
       transformOrigin: {
         0: '0%',
@@ -10,6 +13,7 @@ module.exports = {
       backgroundImage: (theme) => ({
         'landing-cover': "url('/images/landing-cover.jpg')",
         'homestay-cover': "url('/images/homestay-cover.jpg')",
+        'homestay-art': "url('/images/homestay-cover-art.png')",
       }),
       blur: {
         px: '1px',
@@ -25,6 +29,17 @@ module.exports = {
       '1/2': '50%',
       '3/4': '75%',
       full: '100%',
+    },
+    minHeight: {
+      4: '1rem',
+      8: '2rem',
+      16: '3rem',
+      24: '4rem',
+      28: '4.5rem',
+      32: '5rem',
+      header: '5vh',
+      body: '95vh',
+      footer: '5vh',
     },
   },
   variants: {

@@ -15,12 +15,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='description' content='The best and less explored homestays under one website' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <link rel='icon' href='/favicon.ico' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap'
+        />
       </Head>
-      <section className='app'>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </section>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   )
 }

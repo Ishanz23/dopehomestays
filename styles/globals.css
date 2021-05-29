@@ -13,7 +13,8 @@
   }
 }
 
-.app {
+#__next {
+  width: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
@@ -21,13 +22,13 @@
   grid-template-areas: 'header' 'main' 'footer';
 }
 
-.app > header {
+#__next > header {
   grid-area: header;
 }
-.app > main {
+#__next > main {
   grid-area: main;
 }
-.app > footer {
+#__next > footer {
   grid-area: footer;
 }
 
