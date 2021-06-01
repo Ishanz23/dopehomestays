@@ -1,5 +1,5 @@
 import { gql, useMutation } from '@apollo/client'
-import { Form, Formik } from 'formik'
+import { Form, Formik, useFormikContext } from 'formik'
 import Link from 'next/link'
 import * as Yup from 'yup'
 
@@ -31,6 +31,14 @@ interface LoginResponse {
   }
 }
 
+type LoginType = 'email' | 'mobile'
+interface LoginForm {
+  loginType: LoginType
+  email: string
+  mobile: string
+  password: string
+}
+
 const signInSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email'),
   mobile: Yup.number()
@@ -42,6 +50,13 @@ const signInSchema = Yup.object().shape({
 })
 
 export default function SigninPage() {
+  const initialValues: LoginForm = {
+    loginType: 'email',
+    email: '',
+    mobile: '',
+    password: '',
+  }
+
   const [
     emailLogin,
     { data: emailLoginData, loading: emailLoginLoading, error: emailLoginError },
@@ -71,8 +86,16 @@ export default function SigninPage() {
     }
   }
 
-  const onLoginTypeChange = (loginType: 'email' | 'mobile') => {
+  const onLoginTypeChange = (
+    setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void,
+    loginType: LoginType
+  ) => {
     console.log(loginType)
+    if (loginType === 'email') {
+      setFieldValue('mobile', '', true)
+    } else {
+      setFieldValue('email', '', true)
+    }
   }
 
   return (
@@ -88,23 +111,25 @@ export default function SigninPage() {
           </Link>
         </p>
       </div>
-      <Formik
-        initialValues={{
-          loginType: 'email',
-          email: '',
-          mobile: '',
-          password: '',
-        }}
-        validationSchema={signInSchema}
-        onSubmit={signin}>
-        {({ values }) => (
+      <Formik initialValues={initialValues} validationSchema={signInSchema} onSubmit={signin}>
+        {({ values, setFieldValue }) => (
           <Form className='card px-8 md:mr-6 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
             <label className='mb-1 font-semibold'>Login Using: </label>
             <div className='flex items-center justify-start gap-4 py-4'>
-              <Radio name='loginType' value='email' onChange={onLoginTypeChange}>
+              <Radio
+                name='loginType'
+                value='email'
+                onChange={(loginType) => {
+                  onLoginTypeChange(setFieldValue, loginType)
+                }}>
                 Email
               </Radio>
-              <Radio name='loginType' value='mobile' onChange={onLoginTypeChange}>
+              <Radio
+                name='loginType'
+                value='mobile'
+                onChange={(loginType) => {
+                  onLoginTypeChange(setFieldValue, loginType)
+                }}>
                 Mobile
               </Radio>
             </div>
