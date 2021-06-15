@@ -7,11 +7,13 @@ export default function TextInput({ label, ...props }: { type: string; label: st
   const [field, meta] = useField(props)
   return (
     <>
-      <label htmlFor={props.id || props.name} className='mb-1 font-semibold'>
-        {label}
-      </label>
+      <div className='flex items-center justify-between py-2 pr-2'>
+        <label htmlFor={props.id || props.name} className='font-semibold'>
+          {label}
+        </label>
+        <div className='text-red-500 dark:text-red-400 flex items-center'>{meta.touched && meta.error}</div>
+      </div>
       <input className='input-field' {...field} {...props} />
-      <div className='text-red-500 dark:text-red-400 h-12 flex items-center'>{meta.touched && meta.error}</div>
     </>
   )
 }

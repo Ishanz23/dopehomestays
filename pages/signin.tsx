@@ -100,7 +100,7 @@ export default function SigninPage() {
 
   return (
     <div className='h-full w-full md:flex items-center justify-center'>
-      <div className='md:flex-grow'>
+      <div className='md:flex-grow mb-4 md:m-0 p-4'>
         <h2 className='text-center font-semibold mb-8 dark:text-gray-200'>
           Sign in your account to check exclusive offers
         </h2>
@@ -141,7 +141,7 @@ export default function SigninPage() {
             <TextInput type='password' name='password' id='password' label='Password'></TextInput>
             <button
               type='submit'
-              className='px-4 mt-4 mb-4 py-2 text-sm font-semibold rounded-md text-gray-200 bg-green-600 border-2 border-transparent uppercase tracking-wider hover:bg-transparent hover:text-green-600 dark:hover:text-green-400 hover:border-green-600 dark:hover:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-600'>
+              className='px-4 mt-8 mb-4 py-2 text-sm font-semibold rounded-md text-gray-200 bg-green-600 border-2 border-transparent uppercase tracking-wider hover:bg-transparent hover:text-green-600 dark:hover:text-green-400 hover:border-green-600 dark:hover:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-600'>
               sign in
             </button>
             {emailLoginError ? <p className='p-4 text-red-500'>{emailLoginError.message}</p> : ''}

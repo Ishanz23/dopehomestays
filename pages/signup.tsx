@@ -34,8 +34,8 @@ export default function SignupPage() {
   })
 
   return (
-    <div className='md:flex items-center justify-center'>
-      <div className='md:flex-grow'>
+    <div className='h-full w-full md:flex items-center justify-center md:pt-6'>
+      <div className='md:flex-grow mb-4 md:m-0 p-4'>
         <h2 className='text-center font-semibold mb-8 dark:text-gray-200'>
           Create your account for a personalized experience
         </h2>
@@ -48,7 +48,7 @@ export default function SignupPage() {
       </div>
       <form
         onSubmit={formik.handleSubmit}
-        className='card px-8 md:mr-6 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
+        className='card px-8 py-0 md:mr-6 md:w-1/2 lg:w-2/5 flex flex-col dark:text-gray-300'>
         <div className='input-container'>
           <label htmlFor='password' className='mb-1 md:w-1/3 font-semibold'>
             First name
